@@ -1,0 +1,45 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.1'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'net.redheademile'
+version = '1.0.0'
+
+java {
+	sourceCompatibility = '21'
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		name 'jitpack'
+		url 'https://jitpack.io'
+	}
+}
+
+dependencies {
+	implementation 'com.google.code.gson:gson:2.8.9'
+	implementation 'com.github.mwiede:jsch:0.2.16'
+	implementation group: 'org.bouncycastle', name: 'bcprov-jdk18on', version: '1.77'
+
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-mail:3.0.9'
+
+	// database
+	implementation 'mysql:mysql-connector-java:8.0.33'
+	implementation 'com.github.RedHeadEmile:JDapper:e39c645cea'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc:3.1.5'
+
+	compileOnly 'org.projectlombok:lombok:1.18.30'
+	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
